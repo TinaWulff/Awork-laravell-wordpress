@@ -1,0 +1,101 @@
+/* WordPress Dashboard Styles */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.dashboard-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #4fbdcb;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dashboard-cards h2 {
+color: #4fbdcb;
+
+}
+
+.dashboard-card-link {
+    text-decoration: none;
+}
+
+.dashboard-card {
+    padding: 2rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 200px;
+    max-width: 250px;
+    background: #f6f7f8;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+.dashboard-card-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-card-icon img {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover .dashboard-card-icon img {
+    transform: scale(1.1);
+}
+
+.dashboard-card:hover .dashboard-card-icon{
+filter: grayscale(10%);
+}
+
+
+.dashboard-card-title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.dashboard-card-title {
+    color: #292d2d;
+}
+
+.dashboard-card-description {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.dashboard-settings-link {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.dashboard-settings-link a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.dashboard-settings-link a:hover {
+    color: #333;
+}

@@ -1,0 +1,267 @@
+/* WordPress Function Pages Styles */
+* {
+    box-sizing: border-box;
+}
+
+.function-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+ 
+}
+
+.back-link {
+    margin-bottom: 2rem;
+}
+
+.back-link a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+.function-card {
+    /* border: 1px solid #ddd; */
+    padding: 2rem;
+    border-radius: 20px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.function-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #4fbdcb;
+}
+
+.function-description {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group-large {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #9cc6cc;
+    border-radius: 5px;
+    font-size: 1rem;
+     box-shadow: inset 3px 3px 30px 5px rgba(127, 128, 129, 0.1);
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #9cc6cc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+    box-shadow: inset 3px 3px 30px 5px #9cc6cc14;
+    font-family: 'roboto', arial, sans-serif;
+      background: #f9f9f9;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #4fbdcb;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #b3dbe1; 
+}
+
+.form-select:hover {
+    border-color: #0073aa;
+    background-color: #a8d5db;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+}
+
+.form-file {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #f8f9fa;
+    color: #333;
+    border: 2px dashed #4fbdcb;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.custom-file-upload:hover {
+    background-color: #e9ecef;
+    border-color: #0073aa;
+    color: #0073aa;
+}
+
+.custom-file-upload.has-file {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.file-name {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.form-help-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.submit-button {
+    background-color: #0073aa;
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #318592;
+}
+
+.submit-button {
+    background-color: #4fbdcb;
+}
+
+
+/* Success/Error Messages */
+.message {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.message.success {
+    color: green;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    color: red;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* Custom Select Dropdown */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select select {
+    display: none;
+}
+
+.select-selected {
+    background-color: #b3dbe1;
+    border: 2px solid #4fbdcb;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.select-selected:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #666 transparent transparent transparent;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.select-selected.select-arrow-active:after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.select-selected:hover {
+    background-color: #a8d5db;
+    border-color: #0073aa;
+}
+
+.select-items {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 2px solid #4fbdcb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.select-items div {
+    color: #333;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.select-items div:hover {
+    background-color: #f8f9fa;
+}
+
+.select-items div.same-as-selected {
+    background-color: #e3f2fd;
+    color: #0073aa;
+    font-weight: 500;
+}
+
+.select-hide {
+    display: none;
+}
