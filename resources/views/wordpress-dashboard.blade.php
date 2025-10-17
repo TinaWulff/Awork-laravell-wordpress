@@ -26,7 +26,21 @@
                 <p class="dashboard-card-description">Opret en ny WordPress-side med tekst og billeder</p>
             </div>
         </a>
+    
+
+
+        <!-- NYT: Tilføj til Elementor-side knap -->
+        <a href="/add-to-elementor" class="dashboard-card-link">
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">
+                    📝
+                </div>
+                <h2 class="dashboard-card-title">Tilføj til Elementor-side</h2>
+                <p class="dashboard-card-description">Tilføj nyt indhold til en eksisterende Elementor-side</p>
+            </div>
+        </a>
     </div>
+
 
     <!-- Link tilbage til WordPress-info hvis de vil ændre indstillinger -->
     <div class="dashboard-settings-link">

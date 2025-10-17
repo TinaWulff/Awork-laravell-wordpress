@@ -21,3 +21,8 @@ Route::get('/wordpress-post', [WordPressController::class, 'showPostForm']);
 Route::post('/wordpress-post', [WordPressController::class, 'sendToWordPress']);
 Route::post('/add-new-page', [WordpressController::class, 'addNewPage']);
 Route::post('/upload-media', [WordpressController::class, 'uploadMedia']);
+
+
+//TIL ELEMENTOR integration - med to funktionaliteter
+Route::get('/wordpress', [WordpressController::class, 'index'])->name('wordpress.dashboard');
+Route::post('/add-to-elementor', [WordpressController::class, 'addToElementorPage'])->name('elementor.add');

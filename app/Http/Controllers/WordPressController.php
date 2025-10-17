@@ -15,41 +15,40 @@ class WordPressController extends Controller
         return view('wordpress-info', compact('user'));
     }
 
-
     public function saveForm(Request $request)
     {
         $user = \App\Models\User::first();
 
-    if (!$user) {
-        // Opret ny bruger, hvis der ingen findes
-        $user = new \App\Models\User();
-        $user->name = 'Testbruger'; // Kan ændres til noget mere relevant
-        $user->email = 'test@example.com';
-        $user->password = bcrypt('hemmelig');
+        if (!$user) {
+            // Opret ny bruger, hvis der ingen findes
+            $user = new \App\Models\User();
+            $user->name = 'Testbruger'; // Kan ændres til noget mere relevant
+            $user->email = 'test@example.com';
+            $user->password = bcrypt('hemmelig');
+        }
+
+        $user->wp_url = $request->input('wp_url');
+        $user->wp_username = $request->input('wp_username');
+        $user->wp_app_password = \Crypt::encryptString($request->input('wp_app_password'));
+        $user->save();
+
+        return redirect('/wordpress-dashboard')->with('success', 'Oplysninger gemt! Du kan nu bruge WordPress-funktionerne.');
     }
 
-    $user->wp_url = $request->input('wp_url');
-    $user->wp_username = $request->input('wp_username');
-    $user->wp_app_password = \Crypt::encryptString($request->input('wp_app_password'));
-    $user->save();
+    public function showDashboard()
+    {
+        return view('wordpress-dashboard');
+    }
 
-    return redirect('/wordpress-dashboard')->with('success', 'Oplysninger gemt! Du kan nu bruge WordPress-funktionerne.');
-}
+    public function showUploadForm()
+    {
+        return view('upload-images');
+    }
 
-public function showDashboard()
-{
-    return view('wordpress-dashboard');
-}
-
-public function showUploadForm()
-{
-    return view('upload-images');
-}
-
-public function showCreatePageForm()
-{
-    return view('create-page');
-}
+    public function showCreatePageForm()
+    {
+        return view('create-page');
+    }
 
 
 public function showPostForm()
@@ -217,6 +216,41 @@ public function uploadMedia(Request $request)
         return back()->with('success', $message);
     } else {
         return back()->with('error', 'Der skete en fejl ved upload: ' . $response->body());
+    }
+}
+
+
+
+    //Til Opdatering af ELEMENTOR-side
+
+    public function addToElementorPage(Request $request)
+{
+    $request->validate([
+        'page_id' => 'required|integer',
+        'content' => 'required|string',
+        'comment' => 'nullable|string',
+    ]);
+
+    // Hent brugerens WordPress credentials
+    $user = \App\Models\User::first();
+    $wp_url = $user->wp_url;
+    $wp_username = $user->wp_username;
+    $wp_app_password = $user->wp_app_password ? \Crypt::decryptString($user->wp_app_password) : null;
+
+    // Send til WordPress custom endpoint
+    $response = \Http::withoutVerifying()
+        ->post(rtrim($wp_url, '/') . '/wp-json/myplugin/v1/add-elementor-content', [
+            'page_id' => $request->input('page_id'),
+            'content' => $request->input('content'),
+            'comment' => $request->input('comment'),
+        ]);
+
+    if ($response->successful()) {
+        return back()->with('success', 'Indhold er tilføjet til Elementor-siden!');
+    } else {
+        $errorData = $response->json();
+        $errorMessage = $errorData['message'] ?? 'Ukendt fejl';
+        return back()->with('error', 'Fejl: ' . $errorMessage);
     }
 }
 }
